@@ -18,4 +18,4 @@ yarn dev
 ```
 
 ## Note
-You will need the [POC Directus server](https://github.com/test487/my-directus-online) running in the background for you to connect to the CMS UI which contains the DB data.
+You will need the [POC Directus server](https://github.com/test487/poc-cms) running in the background for you to connect to the CMS UI which contains the DB data.
