@@ -1,5 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
+import { Directus } from "@directus/sdk";
 
 interface Accordion {
   title: string;
@@ -12,22 +13,26 @@ function App() {
   const [accordions, setAccordions] = useState<Accordion[]>([]);
   const params = new URLSearchParams(window.location.href);
   const status = params.get("status");
+  const directus = new Directus("http://167.172.80.70:8055");
 
   useEffect(() => {
-    console.log(window.location.pathname);
     const getData = async () => {
       // const filter = `?filter={ "status": { "_eq": "published" }}`
-      const response = await fetch(
-        `http://167.172.80.70:8055/items/ssg_accordion`
-      );
-      const jsonData = await response.json();
-      setAccordions(jsonData.data);
+      const response = await directus.items("ssg_page_layout_1").readByQuery({
+        filter: {
+          uuid: { _eq: "614e1379-9ccc-4bcd-8bb5-a10ebdd3912b" },
+        },
+        fields: ["*", "blocks.*", "blocks.item.*", "*.collection"],
+        limit: 1,
+      });
+      const contentBlocks = response?.data?.[0].blocks ?? [];
+      const accordionArr = contentBlocks.map((block: any) => block.item);
+      setAccordions(accordionArr);
     };
     getData();
   }, []);
 
   const handleGetUuid = (e: any) => {
-    console.log("handleGetUuid", e.target.dataset.uuid);
     navigator.clipboard.writeText(e.target.dataset.uuid);
   };
 
@@ -42,7 +47,7 @@ function App() {
           )
           .map((a) => {
             return (
-              <div>
+              <div key={a.uuid}>
                 <p data-uuid={a.uuid} onClick={handleGetUuid}>
                   {a.title}
                 </p>
