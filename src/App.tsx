@@ -13,7 +13,7 @@ function App() {
   const [accordions, setAccordions] = useState<Accordion[]>([]);
   const params = new URLSearchParams(window.location.href);
   const status = params.get("status");
-  const directus = new Directus("http://167.172.80.70:8055");
+  const directus = new Directus(import.meta.env.DIRECTUS_SERVER);
 
   useEffect(() => {
     const getData = async () => {
