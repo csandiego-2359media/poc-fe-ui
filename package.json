@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@directus/sdk": "^10.3.3",
+    "@molb/gobiz-styleguide": "^0.15.26",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
