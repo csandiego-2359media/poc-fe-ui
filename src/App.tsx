@@ -1,19 +1,23 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import { Directus } from "@directus/sdk";
-import { Header, Menu, Button } from "@molb/gobiz-styleguide";
+import { Header, Menu, Button, IconButton, Icon, Row, Col } from "@molb/gobiz-styleguide";
 import styled from "styled-components";
 import { MenuOption } from "@molb/gobiz-styleguide/src/components/menu/components/MenuHeader";
 
 const HeaderContent = styled.div`
   display: flex;
   align-items: center;
+
+  > button {
+    margin-left: 24px;
+  }
 `;
 
 const TitleSection = styled.section`
   background-color: #037e8a;
   color: #ffffff;
-  padding: 36px 48px 36px 48px;
+  padding: 36px 48px;
 
   nav > ul {
     display: flex;
@@ -48,11 +52,45 @@ const TitleSection = styled.section`
     color: #d6d6d6;
   }
 
-  h1 {
-    font-family: hknova-semibold;
-    font-size: 48px;
-    font-weight: 600;
+  > h1 {
+    color: inherit;
     margin-top: 24px;
+  }
+`;
+
+const MainSection = styled.section`
+  padding: 80px 48px 0px 48px;
+;`
+
+const SideNav = styled.section`
+  nav > ul {
+    list-style-type: none;
+  }
+
+  nav > ul > li > a {
+    border-bottom: 1px solid #323232;
+    color: #323232;
+    display: block;
+    font-size: 16px;
+    padding: 12px 0px;
+    text-decoration: none;
+  }
+
+  nav > ul > li > a:hover,
+  nav > ul > li > a.selected {
+    color: #037e8a;
+  }
+
+  nav > ul > li > a.selected {
+    font-weight: 600;
+  }
+  `;
+
+const ContentSection = styled.section`
+  padding-left: 48px;
+
+  p {
+    margin-top: 32px;
   }
 `;
 
@@ -75,9 +113,25 @@ function App() {
     submenu: [
       {
         key: "/",
-        label: "Sample",
+        label: "Overview",
         sublevel: false,
-      },
+      }, {
+        key: "/",
+        label: "Home-Based Businesses",
+        sublevel: false,
+      }, {
+        key: "/",
+        label: "Key Steps to Start a Business",
+        sublevel: false,
+      }, {
+        key: "/",
+        label: "Next Steps to Consider",
+        sublevel: false,
+      }, {
+        key: "/",
+        label: "FAQ",
+        sublevel: false,
+      }
     ],
   }, {
     key: '/',
@@ -86,7 +140,35 @@ function App() {
     submenu: [
       {
         key: "/",
-        label: "Sample",
+        label: "Overview",
+        sublevel: false,
+      }, {
+        key: "/",
+        label: "Government Assistance",
+        sublevel: false,
+      }, {
+        key: "/",
+        label: "Business Grants Portal",
+        sublevel: false,
+      }, {
+        key: "/",
+        label: "Licences and Permits",
+        sublevel: false,
+      }, {
+        key: "/",
+        label: "SkillsFuture for Enterprise",
+        sublevel: false,
+      }, {
+        key: "/",
+        label: "Accreditation",
+        sublevel: false,
+      }, {
+        key: "/",
+        label: "Taxes, GST and Customs",
+        sublevel: false,
+      }, {
+        key: "/",
+        label: "GeBIZ Alerts",
         sublevel: false,
       },
     ],
@@ -97,7 +179,7 @@ function App() {
     submenu: [
       {
         key: "/",
-        label: "Sample",
+        label: "No more",
         sublevel: false,
       },
     ],
@@ -108,7 +190,7 @@ function App() {
     submenu: [
       {
         key: "/",
-        label: "Sample",
+        label: "Stop looking",
         sublevel: false,
       },
     ],
@@ -119,7 +201,7 @@ function App() {
     submenu: [
       {
         key: "/",
-        label: "Sample",
+        label: "So kaypoh...",
         sublevel: false,
       },
     ],
@@ -130,7 +212,7 @@ function App() {
     submenu: [
       {
         key: "/",
-        label: "Sample",
+        label: "HALO POLIS!",
         sublevel: false,
       },
     ],
@@ -158,13 +240,16 @@ function App() {
   };
 
   const nav = <HeaderContent>
-    <Menu optionList={optionList} selectedKeys={[]} onClick={() => {}} mode="horizontal"/>
+    <Menu optionList={optionList} selectedKeys={[]} onClick={() => { }} mode="horizontal" />
     <Button label="Login" size="medium" />
+    <IconButton onClick={() => { }}>
+      <Icon.Search />
+    </IconButton>
   </HeaderContent>;
 
   return (
     <>
-      <Header childComponent={nav}/>
+      <Header childComponent={nav} />
       <TitleSection>
         <nav>
           <ul>
@@ -176,26 +261,52 @@ function App() {
         </nav>
         <h1>Develop Human Capital</h1>
       </TitleSection>
-      <h1>POC FE UI</h1>
-      {accordions.length > 0 ? (
-        accordions
-          .filter(
-            (a) =>
-              a.permalink === window.location.pathname && status !== "published"
-          )
-          .map((a) => {
-            return (
-              <div key={a.uuid}>
-                <p data-uuid={a.uuid} onClick={handleGetUuid}>
-                  {a.title}
-                </p>
-                <p>{a.content}</p>
-              </div>
-            );
-          })
-      ) : (
-        <h1>No accordions</h1>
-      )}
+      <MainSection>
+        <Row gutter={0}>
+          <Col span={2}>
+            <SideNav>
+              <nav>
+                <ul>
+                  <li><a href="#" className="selected">Enterprise Portal for Jobs and Skills</a></li>
+                  <li><a href="#">Programmes and Initiatives</a></li>
+                  <li><a href="#">Resources and Toolkits</a></li>
+                  <li><a href="#">Digital Services</a></li>
+                </ul>
+              </nav>
+            </SideNav>
+          </Col>
+          <Col span={10}>
+            <ContentSection>
+              <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas hendrerit sagittis ultricies.</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas interdum neque velit, eget bibendum neque hendrerit id. Nunc cursus, lorem vitae venenatis dictum, ligula neque ornare arcu, vel condimentum turpis neque sed ligula. Cras vitae est scelerisque, gravida mi sed, lobortis nunc. Nam elementum ornare nunc, eget dictum enim faucibus eget. Praesent a nibh at libero eleifend faucibus. Phasellus porttitor nulla non sem placerat, ac consequat mi commodo. Integer varius massa vel turpis aliquet, et interdum ipsum maximus. Ut interdum lacinia nibh tempus ornare. Sed posuere pretium massa, quis porttitor sapien aliquam vitae. Aliquam at magna at nibh ullamcorper posuere sit amet ut est. Nullam accumsan mollis neque vel tincidunt.
+              </p>
+              <p>
+                Proin id dolor et leo feugiat mattis vel sed eros. Morbi gravida venenatis turpis, nec faucibus nisl tempor sit amet. Aliquam erat volutpat. Nullam consectetur ac erat sed luctus. Praesent a vestibulum nisl. Suspendisse potenti. Nullam rhoncus odio et turpis varius, id tempor nunc suscipit. Proin lacus arcu, feugiat sed risus non, vestibulum volutpat elit. Vestibulum fringilla ante lorem, in tincidunt sapien auctor quis. Vivamus velit est, molestie non ullamcorper sit amet, tincidunt at odio. Maecenas at lobortis urna. Nullam imperdiet egestas consectetur. Suspendisse maximus arcu et tellus posuere, a iaculis enim dictum. Donec ac sem aliquam, venenatis mauris at, ornare felis.
+              </p>
+              {accordions.length > 0 ? (
+                accordions
+                  .filter(
+                    (a) =>
+                      a.permalink === window.location.pathname && status !== "published"
+                  )
+                  .map((a) => {
+                    return (
+                      <div key={a.uuid}>
+                        <p data-uuid={a.uuid} onClick={handleGetUuid}>
+                          {a.title}
+                        </p>
+                        <p>{a.content}</p>
+                      </div>
+                    );
+                  })
+              ) : (
+                <p>(No accordions)</p>
+              )}
+            </ContentSection>
+          </Col>
+        </Row>
+      </MainSection>
     </>
   );
 }

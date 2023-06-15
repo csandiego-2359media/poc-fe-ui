@@ -1,38 +1,61 @@
 @font-face {
-  src: url(./assets/fonts/HKNova-Light.otf);
-  font-family: hknova-light;
-  font-weight: 300;
+    src: url(./assets/fonts/HKNova-Light.otf);
+    font-family: hknova-light;
+    font-weight: 300;
 }
+
 @font-face {
-  src: url(./assets/fonts/HKNova-Regular.otf);
-  font-family: hknova-regular;
-  font-weight: 400;
+    src: url(./assets/fonts/HKNova-Regular.otf);
+    font-family: hknova-regular;
+    font-weight: 400;
 }
+
 @font-face {
-  src: url(./assets/fonts/HKNova-SemiBold.otf);
-  font-family: hknova-semibold;
-  font-weight: 600;
+    src: url(./assets/fonts/HKNova-SemiBold.otf);
+    font-family: hknova-semibold;
+    font-weight: 600;
 }
+
 @font-face {
-  src: url(./assets/fonts/HKNova-Medium.otf);
-  font-family: hknova-medium;
-  font-weight: 500;
+    src: url(./assets/fonts/HKNova-Medium.otf);
+    font-family: hknova-medium;
+    font-weight: 500;
 }
+
 @font-face {
-  src: url(./assets/fonts/HKNova-Bold.otf);
-  font-family: hknova-bold;
-  font-weight: 700;
+    src: url(./assets/fonts/HKNova-Bold.otf);
+    font-family: hknova-bold;
+    font-weight: 700;
 }
+
 @font-face {
-  src: url(./assets/fonts/HKNova-ExtraBold.otf);
-  font-family: hknova-extrabold;
-  font-weight: 800;
+    src: url(./assets/fonts/HKNova-ExtraBold.otf);
+    font-family: hknova-extrabold;
+    font-weight: 800;
 }
 
 html {
     -webkit-font-smoothing: antialiased;
 }
 
-html, body {
+html,
+body {
     font-family: hknova-regular;
+    font-size: 18px;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 36px;
+    font-weight: 600;
+}
+
+h1,
+h2 {
+    font-family: hknova-semibold;
+    color: #037e8a;
 }
